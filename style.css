@@ -12,3 +12,67 @@ header {
     font-family: 'Raleway', sans-serif;
     padding: 15px
 }
+
+aside {
+    background-color: rgb(230, 228, 228);
+}
+
+.search-city-text {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 20px;
+}
+
+.sideBar {
+    display: flex;
+    margin: 5px;
+    flex-grow: 1;
+    flex-direction: column;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.main-section {
+    display: flex;
+    flex-grow: 4;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.input {
+    height: 100%;
+    margin: 2px;
+}
+
+.input-section {
+    height: 40px;
+    width: 80%;
+    margin: 2px;
+}
+
+.fas {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color:lightslategrey;
+    color: white;
+    cursor: pointer;
+}
+
+.cityDiv{
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+}

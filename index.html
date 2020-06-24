@@ -7,18 +7,28 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/1ac19bcbef.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
     <header class="header">Weather Dashboard</header>
 
     <div class="container">
-        <aside class="sideBar">Search for a city:
-            <br>
-            <input type="text"><i class="fas fa-search"></i>
+        <aside class="sideBar">
+            <div class="search-city-text">
+                Search for a city:
+            </div>
+            <div class="input">
+            <input type="text" class="input-section"><i class="fas fa-search"></i>
+            </div>
+
+            <div class="city-section">
+                <div class="cityDiv">Sydney</div>
+            </div>
+            
         </aside>
 
-        <main>
+        <main class="main-section">
             <div class="card-section"></div>
             <div class="forcast-section">5-Day Forcast:</div>
         </main>

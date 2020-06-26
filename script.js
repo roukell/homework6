@@ -46,10 +46,10 @@ $(".fa-search").on("click", function (event) {
 })
 
 // call API for 5 days forecast
-const keyAPI;
-const queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + cityEntered + "&appid=" + keyAPI;
+const keyAPI = "be69296eb40c19cd4eb4d12be03cdf06";
+const queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + cityArray[cityArray.length - 1] + "&appid=" + keyAPI;
 
-
+console.log(queryURL);
 
 
 

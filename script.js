@@ -6,13 +6,14 @@ let storedCity = JSON.parse(localStorage.getItem("storedCity"));
 if (storedCity !== null) {
     cityArray = storedCity;
 } else {
-    cityArray = new Array();
+    cityArray = [];
     cityArray[0] = "Sydney";
 }
 
 renderCities();
 
 function renderCities() {
+    cityList.innerHTML = "";
     for (i = 0; i < cityArray.length; i++) {
     let cityli = document.createElement("li");
     cityli.innerHTML = cityArray[i];
@@ -43,6 +44,12 @@ $(".fa-search").on("click", function (event) {
     
     renderCities();
 })
+
+// call API for 5 days forecast
+const keyAPI;
+const queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + cityEntered + "&appid=" + keyAPI;
+
+
 
 
 

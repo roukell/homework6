@@ -1,5 +1,12 @@
 let cityList = document.querySelector(".city-section");
 
+// display current time and date on weather forecast in .card-section
+const currentTime = moment().format("MMMM Do YYYY, H:mm");
+console.log(currentTime);
+const timeDisplay = $("<div>");
+timeDisplay.text(currentTime);
+$(".date-and-time").append(timeDisplay);
+
 // get input from local storage
 let storedCity = JSON.parse(localStorage.getItem("storedCity"));
 
@@ -52,25 +59,35 @@ const cityListJson =
 
 console.log(queryURL);
 
-// create a function: to display current forecast of cityEntered in .card-section
+// create a function: to display current forecast of cityEntered in .card-section after user click search
 function displayCurrentForecast() {
     // create AJAX call
     $.ajax({
         url:queryURL,
         method: "GET"
     }).then(function(response){
-
         // create a div to hold forecast information
-        // const forecastInfo = $("<div>");
-        // forecastInfo.addClass("forcastInfo");
-        // $(".card-section").append(forecastInfo);
-        console.log(cityArray[cityArray.length - 1]);
-        console.log(response.list[0].main.temp);
-        console.log(response.list[0].main.humidity);
-        console.log(response.list[0].wind.speed);
-    })
+        const forecastInfo = $("<div>");
+        forecastInfo.addClass("forcastInfo");
+        $(".current-selected-city").append(forecastInfo);
 
-}
+        // display cityEntered
+        forecastInfo.text(cityArray[cityArray.length - 1]);
+
+        // convert Kelvin to Celcius
+        const celcius = Math.floor(response.list[0].main.temp - 273.15);
+
+        $(".current-selected-city-details").append("<p>" + "Temperature: " + celcius + "&#8451;" + "</p>");
+        $(".current-selected-city-details").append("<p>" + "Humidity: " + response.list[0].main.humidity + "</p>");
+        $(".current-selected-city-details").append("<p>" + "Wind Speed: " + response.list[0].wind.speed + "</p>");
+
+        // append weather icon
+        const iconCode = response.list[0].weather[0].icon;
+        const iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+        console.log(iconURL);
+        $(".icon").attr("src", iconURL);
+
+
+    })}
 
 displayCurrentForecast();
-

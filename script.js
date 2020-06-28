@@ -64,7 +64,7 @@ function displayCurrentForecast() {
     // call API for the 5 days forecast of cityEntered
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
     let queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
-    
+    // console.log(queryURL);
     // create AJAX call
     $.ajax({
         url: queryURL,

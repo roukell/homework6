@@ -57,12 +57,28 @@ aside {
     font-family: 'Raleway', sans-serif;
 }
 
+.future-main-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
 .future-forcast-section {
-    background-color:pink;
     margin: 5px;
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
 }
+/* 
+.future-card {
+    
+}
+
+.future-card-body {
+    
+    background-color: pink;
+
+} */
 
 .input {
     /* height: 100%; */

@@ -1,11 +1,10 @@
-const futureForcastSection = document.getElementsByClassName("future-forcast-section");
+const futureForcastSection = document.getElementById("future-forcast-section");
 const cardSection = document.getElementsByClassName("card-section");
 const currentSelectedCity = document.getElementsByClassName("current-selected-city");
-const icon = document.getElementsByClassName("icon");
-const currentSelectedCityDetails = document.getElementsByClassName("current-selected-city-details");
 const cityList = document.querySelector(".city-section");
 const clickedCity = $(this).text();
 const today = Math.floor(new Date().getTime() / 1000.0);
+
 
 // display current time and date on weather forecast in .card-section
 const currentTime = moment().format("MMMM Do YYYY, H:mm");
@@ -21,6 +20,8 @@ if (storedCity !== null) {
     cityArray = [];
     cityArray[0] = "Sydney";
 }
+
+let lastCityEntered = cityArray[cityArray.length - 1];
 
 renderCities();
 displayCurrentForecast();
@@ -57,14 +58,16 @@ $(".fa-search").on("click", function (event) {
     renderCities();
     displayCurrentForecast();
     reset();
-})
+;})
 
+   
 // create a function: to display current forecast of cityEntered in .card-section after user click search
 function displayCurrentForecast() {
+    reset();
     // call API for the 5 days forecast of cityEntered
-    const lastCityEntered = cityArray[cityArray.length - 1];
+    
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
-    const queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
+    let queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
 
     // create AJAX call
     $.ajax({
@@ -119,9 +122,30 @@ function displayCurrentForecast() {
         $(".icon").attr("src", iconURL);
 
         // create a loop to display five days data
-        
+        for (let j = 1; j <= 5; j++) {
+            const fiveDays = (new Date(today.getTime() + j * day));
+            const year = fiveDays.getFullYear();
+            let month = fiveDays.getMonth() + 1;
+            const date = fiveDays.getDate();
 
+            const futureArray = dateBins[date][0];
+            const futureIconURL = "http://openweathermap.org/img/wn/" + futureArray.weather[0].icon + ".png";
+            const futureTempCelcius = Math.floor(futureArray.main.temp - 273.15);
+            const futureHumidity = futureArray.main.humidity;
 
+            const html = (`
+            <div class="future-card">
+              <div class="future-card-body">
+                <p class="future-title">${year}/${month}/${date}</p>
+                <p><img class="icon" src="${futureIconURL}"></p>
+                <p class="future-temp">Temp:${futureTempCelcius}&#8451;</p>
+                <p class="future-humid">Humidity:${futureHumidity}%</p>
+                </div>
+            </div>
+            `);
+
+            futureForcastSection.insertAdjacentHTML("afterend", html);
+        }
     })
 }
 
@@ -129,41 +153,10 @@ function displayCurrentForecast() {
 $("li").on("click", function (event) {
     reset();
     event.preventDefault();
-    const clickedCity = $(this).text();
+    lastCityEntered = $(this).text();
+
     // console.log(clickedCity);
-
-    const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
-    const queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + clickedCity + "&appid=" + keyAPI;
-
-    // create AJAX call
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        // create a div to hold forecast information
-        const forecastInfo = $("<div>");
-        forecastInfo.addClass("forcastInfo");
-        $(".current-selected-city").append(forecastInfo);
-        // display cityEntered
-        forecastInfo.text(clickedCity);
-
-        // convert Kelvin to Celcius
-        const celcius = Math.floor(response.list[0].main.temp - 273.15);
-
-        // append temp, humidity, wind speed
-        $(".current-selected-city-details").append("<p>" + "Temperature: " + celcius + "&#8451;" + "</p>");
-        $(".current-selected-city-details").append("<p>" + "Humidity: " + response.list[0].main.humidity + "%" + "</p>");
-
-        // convert Mile to Kilometer
-        const km = Math.floor(response.list[0].wind.speed * 1.60934);
-        $(".current-selected-city-details").append("<p>" + "Wind Speed: " + km + " km/h" + "</p>");
-
-        // append weather icon
-        const iconCode = response.list[0].weather[0].icon;
-        const iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-        $(".icon").attr("src", iconURL);
-    })
-
+    displayCurrentForecast();
 })
 
 
@@ -171,4 +164,6 @@ function reset() {
     $(".current-selected-city").empty();
     $(".current-selected-city-details").empty();
     $(".icon").empty();
+    $(".future-forcast-section").empty();
+    $(".future-card").empty();
 }

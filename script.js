@@ -63,7 +63,7 @@ function displayCurrentForecast() {
     reset();
     // call API for the 5 days forecast of cityEntered
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
-    let queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
+    let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
     // console.log(queryURL);
     // create AJAX call
     $.ajax({
@@ -112,7 +112,7 @@ function displayCurrentForecast() {
         $(".current-selected-city-details").append("<p>" + "Wind Speed: " + km + " km/h" + "</p>");
         // append weather icon
         const iconCode = currentTempArray.weather[0].icon;
-        const iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+        const iconURL = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
         $(".icon").attr("src", iconURL);
 
         // get UV index
@@ -126,7 +126,7 @@ function displayCurrentForecast() {
             const date = fiveDays.getDate();
 
             const futureArray = dateBins[date][0];
-            const futureIconURL = "http://openweathermap.org/img/wn/" + futureArray.weather[0].icon + ".png";
+            const futureIconURL = "https://openweathermap.org/img/wn/" + futureArray.weather[0].icon + ".png";
             const futureTempCelcius = Math.floor(futureArray.main.temp - 273.15);
             const futureHumidity = futureArray.main.humidity;
 
@@ -148,7 +148,7 @@ function displayCurrentForecast() {
 
 function getUV() {
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
-    const queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + lastCityEntered + "&appid=" + keyAPI;
+    const queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + lastCityEntered + "&appid=" + keyAPI;
     
     $.ajax({
         url: queryURL,
@@ -156,7 +156,7 @@ function getUV() {
     }).then(function (response){
         const lat = response.coord.lat;
         const lon = response.coord.lon;
-        const UVqueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + keyAPI + "&lat=" + lat + "&lon=" + lon;
+        const UVqueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + keyAPI + "&lat=" + lat + "&lon=" + lon;
 
         $.ajax({
             url: UVqueryURL,

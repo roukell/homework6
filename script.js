@@ -64,7 +64,7 @@ function displayCurrentForecast() {
     // call API for the 5 days forecast of cityEntered
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
     let queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
-
+    console.log(queryURL);
     // create AJAX call
     $.ajax({
         url: queryURL,
@@ -75,6 +75,7 @@ function displayCurrentForecast() {
         forecastInfo.addClass("forcastInfo");
         $(".current-selected-city").append(forecastInfo);
         forecastInfo.text(lastCityEntered);
+        console.log(response);
 
         // changing the decleartion of today to new Date
         // it allows me to work with specific data of a date
@@ -88,16 +89,20 @@ function displayCurrentForecast() {
         for (let i = 0; i < nBins; i++) {
             const date = new Date(today.getTime() + i * day);
             dateBins[date.getDate()] = [];
+            // console.log(date);
         }
 
         const reports = response.list;
         for (const report of reports) {
             const reportDate = new Date(report.dt * 1000).getDate();
             dateBins[reportDate].push(report);
+            // console.log(reportDate);
         }
 
         // display TODAY's weather details in card-section
-        const currentTempArray = dateBins[today.getDate()][0]
+        // const currentTempArray = dateBins[today.getDate()][0];
+        const currentTempArray = response.list[0];
+       
         // convert Kelvin to Celcius
         const celcius = Math.floor(currentTempArray.main.temp - 273.15);
         // append temp, humidity, wind speed
@@ -114,7 +119,7 @@ function displayCurrentForecast() {
         // get UV index
         getUV();
 
-        // create a loop to display five days data
+        // create a loop to display five days weather data
         for (let j = 1; j <= 5; j++) {
             const fiveDays = (new Date(today.getTime() + j * day));
             const year = fiveDays.getFullYear();
@@ -133,7 +138,7 @@ function displayCurrentForecast() {
                 <p><img class="icon" src="${futureIconURL}"></p>
                 <p class="future-temp">Temp:${futureTempCelcius}&#8451;</p>
                 <p class="future-humid">Humidity:${futureHumidity}%</p>
-                </div>
+              </div>
             </div>
             `);
 
@@ -159,7 +164,7 @@ function getUV() {
             method: "GET"
         }).then(function (UVdata) {
             const UV = UVdata.value;
-            $(".current-selected-city-details").append("<p id='UVdiv'>" + "UV index: " + UV + "</p>");
+            $(".current-selected-city-details").append("<p>" + "UV index: " + "<span id='UVdiv'>" + UV + "</span>" + "</p>");
         })
     }) 
 }

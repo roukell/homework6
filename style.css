@@ -25,7 +25,7 @@ aside {
 .container {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: stretch;
     align-content: center;
     margin-left: 10%;
@@ -42,6 +42,14 @@ aside {
     font-family: 'Raleway', sans-serif;
 }
 
+.date-and-time {
+    font-size: 25px;
+}
+
+.current-selected-city {
+    font-size: 35px;
+}
+
 .main-section {
     display: flex;
     flex-grow: 4;
@@ -53,32 +61,54 @@ aside {
 .card-section {
     background-color: grey;
     margin: 5px;
+    padding: 15px;
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
+    border-radius: 5px;
 }
 
 .future-main-div {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: space-between;
+    margin: 5px;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .future-forcast-section {
     margin: 5px;
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
+    flex-grow: 1;
 }
-/* 
+
+.five-day-forecast {
+    margin: 5px;
+    padding:10px;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
 .future-card {
-    
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .future-card-body {
-    
-    background-color: pink;
+    background-color: lightblue;
+    margin: 10px;
+    padding: 10px;
+}
 
-} */
+#UVdiv {
+    background-color:crimson;
+    color: rgb(230, 228, 228);
+    padding: 4px;
+}
 
 .input {
     /* height: 100%; */

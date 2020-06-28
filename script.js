@@ -51,6 +51,7 @@ $(".fa-search").on("click", function (event) {
     cityArray.push(cityEntered);
     localStorage.setItem("storedCity", JSON.stringify(cityArray));
 
+    lastCityEntered = cityEntered;
     renderCities();
     displayCurrentForecast();
     reset();
@@ -151,18 +152,14 @@ function getUV() {
     }).then(function (response){
         const lat = response.coord.lat;
         const lon = response.coord.lon;
-        console.log(lat, lon);
-
         const UVqueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + keyAPI + "&lat=" + lat + "&lon=" + lon;
-        console.log(UVqueryURL);
 
         $.ajax({
             url: UVqueryURL,
             method: "GET"
         }).then(function (UVdata) {
-            console.log(UVdata.value);
             const UV = UVdata.value;
-            $(".current-selected-city-details").append("<p>" + "UV index: " + UV + "</p>");
+            $(".current-selected-city-details").append("<p id='UVdiv'>" + "UV index: " + UV + "</p>");
         })
     }) 
 }

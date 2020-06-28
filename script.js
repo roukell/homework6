@@ -1,10 +1,6 @@
 const futureForcastSection = document.getElementById("future-forcast-section");
-const cardSection = document.getElementsByClassName("card-section");
 const currentSelectedCity = document.getElementsByClassName("current-selected-city");
 const cityList = document.querySelector(".city-section");
-const clickedCity = $(this).text();
-const today = Math.floor(new Date().getTime() / 1000.0);
-
 
 // display current time and date on weather forecast in .card-section
 const currentTime = moment().format("MMMM Do YYYY, H:mm");
@@ -65,7 +61,6 @@ $(".fa-search").on("click", function (event) {
 function displayCurrentForecast() {
     reset();
     // call API for the 5 days forecast of cityEntered
-    
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
     let queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
 
@@ -92,34 +87,31 @@ function displayCurrentForecast() {
         for (let i = 0; i < nBins; i++) {
             const date = new Date(today.getTime() + i * day);
             dateBins[date.getDate()] = [];
-            console.log(date);
         }
 
         const reports = response.list;
-        console.log(reports);
         for (const report of reports) {
             const reportDate = new Date(report.dt * 1000).getDate();
             dateBins[reportDate].push(report);
-            console.log(reportDate);
         }
 
         // display TODAY's weather details in card-section
         const currentTempArray = dateBins[today.getDate()][0]
         // convert Kelvin to Celcius
         const celcius = Math.floor(currentTempArray.main.temp - 273.15);
-
         // append temp, humidity, wind speed
         $(".current-selected-city-details").append("<p>" + "Temperature: " + celcius + "&#8451;" + "</p>");
         $(".current-selected-city-details").append("<p>" + "Humidity: " + currentTempArray.main.humidity + "%" + "</p>");
-
         // convert Mile to Kilometer
         const km = Math.floor(currentTempArray.wind.speed * 1.60934);
         $(".current-selected-city-details").append("<p>" + "Wind Speed: " + km + " km/h" + "</p>");
-
         // append weather icon
         const iconCode = currentTempArray.weather[0].icon;
         const iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
         $(".icon").attr("src", iconURL);
+
+        // get UV index
+        getUV();
 
         // create a loop to display five days data
         for (let j = 1; j <= 5; j++) {
@@ -149,16 +141,39 @@ function displayCurrentForecast() {
     })
 }
 
+function getUV() {
+    const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
+    const queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + lastCityEntered + "&appid=" + keyAPI;
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response){
+        const lat = response.coord.lat;
+        const lon = response.coord.lon;
+        console.log(lat, lon);
+
+        const UVqueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + keyAPI + "&lat=" + lat + "&lon=" + lon;
+        console.log(UVqueryURL);
+
+        $.ajax({
+            url: UVqueryURL,
+            method: "GET"
+        }).then(function (UVdata) {
+            console.log(UVdata.value);
+            const UV = UVdata.value;
+            $(".current-selected-city-details").append("<p>" + "UV index: " + UV + "</p>");
+        })
+    }) 
+}
+
 // create function when clicked on the cities in side bar
 $("li").on("click", function (event) {
     reset();
     event.preventDefault();
     lastCityEntered = $(this).text();
-
-    // console.log(clickedCity);
     displayCurrentForecast();
 })
-
 
 function reset() {
     $(".current-selected-city").empty();

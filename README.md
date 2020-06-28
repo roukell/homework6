@@ -1,8 +1,8 @@
-## homework6: Weather forecast
+# homework6: Weather forecast
 This is a weather forecast including forecast for the day and the future 5 days.
 ![img](./Assets/screencap.png)
 
-# Instruction
+## Instruction
 1. Sydney is the default city that will first appear on your page.
 
 2. To search other cities, type in a city name and then click search.
@@ -13,7 +13,7 @@ This is a weather forecast including forecast for the day and the future 5 days.
 4. All enetered cities will be stored in local storage.
 
 
-# Notes
+## Notes
 1. If the sidebar buttons are not working, please click refresh, and then the page will work again.
 
 2. Please do not click the buttons in sidebar too quickly, otherwise multiple information will show up. 

@@ -64,7 +64,7 @@ function displayCurrentForecast() {
     // call API for the 5 days forecast of cityEntered
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
     let queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
-    console.log(queryURL);
+    
     // create AJAX call
     $.ajax({
         url: queryURL,
@@ -75,7 +75,6 @@ function displayCurrentForecast() {
         forecastInfo.addClass("forcastInfo");
         $(".current-selected-city").append(forecastInfo);
         forecastInfo.text(lastCityEntered);
-        console.log(response);
 
         // changing the decleartion of today to new Date
         // it allows me to work with specific data of a date

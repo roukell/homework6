@@ -29,6 +29,13 @@ function renderCities() {
         cityli.innerHTML = cityArray[i];
         cityList.appendChild(cityli);
     }
+    // create function when clicked on the cities in side bar
+$("li").on("click", function (event) {
+    reset();
+    event.preventDefault();
+    lastCityEntered = $(this).text();
+    displayCurrentForecast();
+})
 }
 
 // when clicked on search icon
@@ -60,7 +67,7 @@ $(".fa-search").on("click", function (event) {
    
 // create a function: to display current forecast of cityEntered in .card-section after user click search
 function displayCurrentForecast() {
-    reset();
+
     // call API for the 5 days forecast of cityEntered
     const keyAPI = "4acbae4fdb0b64a992f7caade418dc6d";
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + lastCityEntered + "&appid=" + keyAPI;
@@ -70,6 +77,7 @@ function displayCurrentForecast() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        reset();
         // create a div to hold searched city name
         const forecastInfo = $("<div>");
         forecastInfo.addClass("forcastInfo");
@@ -155,6 +163,7 @@ function getUV() {
         url: queryURL,
         method: "GET"
     }).then(function (response){
+
         const lat = response.coord.lat;
         const lon = response.coord.lon;
         const UVqueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + keyAPI + "&lat=" + lat + "&lon=" + lon;
@@ -163,19 +172,20 @@ function getUV() {
             url: UVqueryURL,
             method: "GET"
         }).then(function (UVdata) {
+            $(".UVdiv").empty();
             const UV = UVdata.value;
-            $(".current-selected-city-details").append("<p>" + "UV index: " + "<span id='UVdiv'>" + UV + "</span>" + "</p>");
+            $(".current-selected-city-details").append("<p class='UVdiv'>" + "UV index: " + "<span id='UVdiv'>" + UV + "</span>" + "</p>");
         })
     }) 
 }
 
-// create function when clicked on the cities in side bar
-$("li").on("click", function (event) {
-    reset();
-    event.preventDefault();
-    lastCityEntered = $(this).text();
-    displayCurrentForecast();
-})
+// // create function when clicked on the cities in side bar
+// $("li").on("click", function (event) {
+//     reset();
+//     event.preventDefault();
+//     lastCityEntered = $(this).text();
+//     displayCurrentForecast();
+// })
 
 function reset() {
     $(".current-selected-city").empty();

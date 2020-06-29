@@ -172,6 +172,11 @@ li {
         flex-wrap: wrap;
     }
 
+    .five-day-forecast, .card-section {
+        justify-content: center;
+        text-align: center;
+    }
+
   }
   
   /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
@@ -198,6 +203,11 @@ li {
         width: 90%;
         margin: auto;
         flex-wrap: wrap;
+    }
+
+    .five-day-forecast, .card-section {
+        justify-content: center;
+        text-align: center;
     }
 
 }

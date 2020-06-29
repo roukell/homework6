@@ -14,12 +14,4 @@ This is a weather forecast including forecast for the day and the future 5 days.
 
 
 ## Notes
-1. If the sidebar buttons are not working, please click refresh, and then the page will work again.
-
-2. Please do not click the buttons in sidebar too quickly, otherwise multiple information will show up. 
-
-3. If bugs showed up, click refresh page.
-
-4. Debugging awaits~
-
-5. Enjoy~ :)
+Enjoy~ :)

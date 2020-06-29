@@ -145,3 +145,60 @@ li {
     background-color: white;
 }
 
+
+
+/* On screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {  
+    .container{
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+    }
+    
+    .future-card {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .future-card-body {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    .future-main-div {
+        flex-direction: column-reverse;
+        width: 90%;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+
+  }
+  
+  /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+    }
+
+    .future-card {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .future-card-body {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    .future-main-div {
+        flex-direction: column-reverse;
+        width: 90%;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+
+}
+  
+  

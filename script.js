@@ -117,6 +117,7 @@ function displayCurrentForecast() {
 
         // get UV index
         getUV();
+        console.log(dateBins);
 
         // create a loop to display five days weather data
         for (let j = 1; j <= 5; j++) {

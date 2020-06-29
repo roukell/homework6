@@ -45,6 +45,7 @@ aside {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 20px;
+    height: fit-content;
 }
 
 .date-and-time {
@@ -147,8 +148,8 @@ li {
 
 
 
-/* On screens that are 992px wide or less, go from four columns to two columns */
-@media screen and (max-width: 992px) {  
+/* On screens that are 800px wide or less, go from four columns to two columns */
+@media screen and (max-width: 800px) {  
     .container{
         flex-direction: column;
         width: 90%;

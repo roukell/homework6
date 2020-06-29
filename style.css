@@ -42,10 +42,11 @@ aside {
     justify-content: center;
     align-items: stretch;
     align-content: center;
-    margin-left: 10%;
-    margin-right: 10%;
     margin-top: 20px;
     height: fit-content;
+    width: fit-content;
+    margin: auto;
+
 }
 
 .date-and-time {

@@ -154,7 +154,7 @@ li {
         width: 90%;
         margin: auto;
     }
-    
+
     .future-card {
         width: 100%;
         justify-content: center;
@@ -184,6 +184,7 @@ li {
 
     .future-card {
         width: 100%;
+        height: min-content;
         justify-content: center;
     }
 

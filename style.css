@@ -148,8 +148,8 @@ li {
 
 
 
-/* On screens that are 800px wide or less, go from four columns to two columns */
-@media screen and (max-width: 800px) {  
+/* On screens that are 828px wide or less, go from four columns to two columns */
+@media screen and (max-width: 828px) {  
     .container{
         flex-direction: column;
         width: 90%;

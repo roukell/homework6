@@ -24,10 +24,13 @@ HTML, CSS, JavaScript, JQuery, Moment.js, weather API
 
 5. All enetered cities will be stored in local storage.
 
- ## Contributing
-  The app is contributed by Melody Lo.
+## License
+* MIT
+
+## Contributing
+The app is contributed by Melody Lo.
 
 ## Questions
-If you have any questions, feel free to contact me via email: yiling.melody.lo@gmail.com  
-My GitHub profile: https://github.com/roukell  
-My portfolio: https://melodylo.com   
+* If you have any questions, feel free to contact me via email: yiling.melody.lo@gmail.com  
+* My GitHub profile: https://github.com/roukell  
+* My portfolio: https://melodylo.com   

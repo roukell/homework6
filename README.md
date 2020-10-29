@@ -28,6 +28,6 @@ HTML, CSS, JavaScript, JQuery, Moment.js, weather API
   The app is contributed by Melody Lo.
 
 ## Questions
-  * If you have any questions, feel free to contact me via email: yiling.melody.lo@gmail.com
-  * My GitHub profile: https://github.com/roukell
-  * My portfolio: https://melodylo.com
+If you have any questions, feel free to contact me via email: yiling.melody.lo@gmail.com  
+My GitHub profile: https://github.com/roukell  
+My portfolio: https://melodylo.com   

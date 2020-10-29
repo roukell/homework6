@@ -1,5 +1,6 @@
 # homework6: Weather forecast
-This is a weather forecast including forecast for the day and the future 5 days.
+
+## Preview
 ![img](./Assets/screencap1.png)
 
 ## Description

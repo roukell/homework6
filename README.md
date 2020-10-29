@@ -2,6 +2,14 @@
 This is a weather forecast including forecast for the day and the future 5 days.
 ![img](./Assets/screencap1.png)
 
+## Description
+This is a weather dashboard including forecast for the day and the future 5 days.
+
+* Deployed application: https://roukell.github.io/weather_dashboard/
+
+## Technologies used
+HTML, CSS, JavaScript, Moment.js
+
 ## Instruction
 1. Sydney is the default city that will first appear on your page.
 

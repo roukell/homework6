@@ -179,14 +179,6 @@ function getUV() {
     }) 
 }
 
-// // create function when clicked on the cities in side bar
-// $("li").on("click", function (event) {
-//     reset();
-//     event.preventDefault();
-//     lastCityEntered = $(this).text();
-//     displayCurrentForecast();
-// })
-
 function reset() {
     $(".current-selected-city").empty();
     $(".current-selected-city-details").empty();

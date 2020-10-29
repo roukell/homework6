@@ -9,7 +9,7 @@ This is a weather dashboard including forecast for the day and the future 5 days
 https://roukell.github.io/weather_dashboard/
 
 ## Technologies used
-HTML, CSS, JavaScript, Moment.js
+HTML, CSS, JavaScript, JQuery, Moment.js, weather API
 
 ## Instruction
 1. Open the application [here](https://roukell.github.io/weather_dashboard/)

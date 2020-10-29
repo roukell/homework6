@@ -28,3 +28,4 @@ HTML, CSS, JavaScript, JQuery, Moment.js, weather API
 ## Questions
   * If you have any questions, feel free to contact me via email: yiling.melody.lo@gmail.com
   * My GitHub profile: https://github.com/roukell
+  * My portfolio: https://melodylo.com
